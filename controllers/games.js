@@ -62,7 +62,7 @@ const sendAllGames = async (req, res) => {
         return
     }
     // Записываем обновлённый список игр в файл
-    await writeData("./games.json", req.games);
+    await writeData("./data/games.json", req.games);
     // В качестве ответа отправляем объект с двумя полями
     res.send({
         games: req.games, // Обновлённый список со всеми играми
@@ -70,8 +70,16 @@ const sendAllGames = async (req, res) => {
     });
 }
 
+const sendUpdatedGames = (req, res) => {
+  res.send({
+    games: req.games,
+    updated: req.updatedObject
+  });
+};
+
 module.exports ={
     sendAllGames,
     deleteGame,
-    addGameController
+    addGameController,
+    sendUpdatedGames
 }
