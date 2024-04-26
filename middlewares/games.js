@@ -1,4 +1,7 @@
-const { readData } = require("../utils/data"); 
+
+
+
+const { readData, writeData } = require("../utils/data");
 
 const getAllGames = async(req,res,next) =>{
   const games = await readData("./data/games.json");
@@ -13,9 +16,6 @@ const getAllGames = async(req,res,next) =>{
     req.games = games;
     next();
 }
-const { readData, writeData } = require("../utils/data");
-
-
 
 const checkIsTitleInArray = (req, res, next) => {
   req.isNew = !Boolean(req.games.find(item => item.title === req.body.title));
